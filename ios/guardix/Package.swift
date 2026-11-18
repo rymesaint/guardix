@@ -4,16 +4,21 @@ import PackageDescription
 let package = Package(
     name: "guardix",
     platforms: [
-        .iOS(.v12)
+        .iOS("13.0")
     ],
     products: [
         .library(name: "guardix", targets: ["guardix"])
     ],
+    dependencies: [
+        .package(name: "FlutterFramework", path: "../FlutterFramework")
+    ],
     targets: [
         .target(
             name: "guardix",
-            dependencies: [],
-            path: "../Classes"
+            dependencies: [
+                .product(name: "FlutterFramework", package: "FlutterFramework")
+            ],
+            path: "Sources/guardix"
         )
     ]
 )
